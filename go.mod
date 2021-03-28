@@ -1,4 +1,4 @@
-module github.com/artemgareev/zlogkeyscheck
+module github.com/artemgareev/logkeyslint
 
 go 1.16
 
