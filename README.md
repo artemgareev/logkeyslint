@@ -1,6 +1,6 @@
-# zlogkeyscheck
+# logkeyslint
 
-zlogkeyscheck is a go static analysis tool to find rs/zerolog log keys types mismatches
+logkeyslint is a go static analysis tool to find rs/zerolog log keys types mismatches
 
 Example of log key mismatch:
 ```go

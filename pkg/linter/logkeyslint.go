@@ -1,4 +1,4 @@
-package analyzer
+package linter
 
 import (
 	"go/ast"
@@ -15,7 +15,7 @@ var logTypes = []string{
 var logFieldMap = map[string]string{}
 
 var Analyzer = &analysis.Analyzer{
-	Name: "zlogkeyscheck",
+	Name: "logkeyslint",
 	Doc:  "Checks rs/zerolog log keys types mismatches",
 	Run:  run,
 }
@@ -31,7 +31,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 		if !ok {
 			return true
 		}
-		//|| fun.Sel.Name != "Int64"
+
 		if !inArrayString(fun.Sel.Name, logTypes) {
 			return true
 		}
