@@ -12,6 +12,14 @@ var logTypes = []string{
 	"Time", "Times", "Dur", "Durs",
 }
 
+var intTypes = []string{
+	"Int", "Int8", "Int16", "Int32", "Int64", "Uint", "Uint8", "Uint16", "Uint32", "Uint64",
+}
+
+var intsTypes = []string{
+	"Ints", "Ints8", "Ints16", "Ints32", "Ints64", "Uints", "Uints8", "Uints16", "Uints32", "Uints64",
+}
+
 var logFieldMap = map[string]string{}
 
 var Analyzer = &analysis.Analyzer{
@@ -46,6 +54,12 @@ func run(pass *analysis.Pass) (interface{}, error) {
 
 		if prevType, ok := logFieldMap[arg.Value]; ok {
 			if prevType != fun.Sel.Name {
+				if inArrayString(prevType, intTypes) && inArrayString(fun.Sel.Name, intTypes) {
+					return true
+				}
+				if inArrayString(prevType, intsTypes) && inArrayString(fun.Sel.Name, intsTypes) {
+					return true
+				}
 				pass.Reportf(node.Pos(), "Bad %s log key type of \"%s\" previously was used as \"%s\"\n",
 					arg.Value, fun.Sel.Name, prevType)
 				return true

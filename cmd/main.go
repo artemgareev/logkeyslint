@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/artemgareev/zlogkeyscheck/pkg/linter"
+	"github.com/artemgareev/logkeyslint/pkg/linter"
 	"golang.org/x/tools/go/analysis/singlechecker"
 )
 
